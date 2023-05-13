@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="ChattyMoWPFGUI.View.UserListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewModel="clr-namespace:ChattyMoWPFGUI.ViewModel"
+             mc:Ignorable="d"
+             d:DesignHeight="540" d:DesignWidth="1010">
+    <UserControl.DataContext>
+        <viewModel:UserListViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox materialDesign:HintAssist.Hint="Search by Username"
+                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                 HorizontalAlignment="Left" Margin="349,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center"
+                 Grid.Column="0" Width="291">
+            <Binding
+                Path="UsernameSearch"
+                UpdateSourceTrigger="PropertyChanged" />
+        </TextBox>
+        <Button Grid.Row="0" Grid.Column="1" Content="Search" Command="{Binding FindUsersCommand}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="10,20,273,20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                Height="43" VerticalAlignment="Top" />
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                  ItemsSource="{Binding Users}" Margin="25,0,10,15">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Id}" Width="150"
+                        Header="ID" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Username}" Width="450"
+                        Header="Username" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Created}" Width="200"
+                        Header="Created" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding LastAction}" Width="200"
+                        Header="Last Activity" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

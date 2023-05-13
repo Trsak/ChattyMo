@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="ChattyMoUWPGUI.View.UserListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
+
+    <Grid Margin="0, 40, 0, 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox PlaceholderText="Search by Username"
+                 Text="{x:Bind ViewModel.UsernameSearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Right" Margin="0,0,2,0" TextWrapping="Wrap" VerticalAlignment="Center"
+                 Grid.Column="0" Width="291" />
+        <Button Grid.Row="0" Grid.Column="1" Content="Search" Command="{x:Bind ViewModel.FindUsersCommand}"
+                Style="{StaticResource AccentButtonStyle}" Margin="2,0,0,0" HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" VerticalAlignment="Top" />
+        <controls:DataGrid GridLinesVisibility="All" ItemsSource="{x:Bind ViewModel.Users}" Grid.Column="0"
+                           Grid.Row="1" Grid.ColumnSpan="2" Margin="12"
+                           AutoGenerateColumns="False" AreRowDetailsFrozen="True">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn
+                    Header="ID" IsReadOnly="True"
+                    Binding="{Binding Id}" />
+                <controls:DataGridTextColumn
+                    Header="Username" IsReadOnly="True"
+                    Binding="{Binding Username}" Width="*" />
+                <controls:DataGridTextColumn
+                    Header="Created" IsReadOnly="True"
+                    Binding="{Binding Created}" />
+                <controls:DataGridTextColumn
+                    Header="Last Action" IsReadOnly="True"
+                    Binding="{Binding LastAction}" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</Page>

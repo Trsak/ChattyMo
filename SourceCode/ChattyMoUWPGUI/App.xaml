@@ -1,0 +1,23 @@
+﻿<Application
+    x:Class="ChattyMoUWPGUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="Control/ValidationTextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Thickness x:Key="DocumentationPageContentPadding">12,20,20,20</Thickness>
+
+            <Style x:Key="CardStyle" TargetType="Grid">
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

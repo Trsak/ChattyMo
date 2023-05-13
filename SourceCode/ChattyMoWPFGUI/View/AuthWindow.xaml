@@ -1,0 +1,80 @@
+﻿<Window x:Class="ChattyMoWPFGUI.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Style="{StaticResource MaterialDesignWindow}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Title="ChattyMo" Height="350" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        xmlns:viewModel="clr-namespace:ChattyMoWPFGUI.ViewModel"
+        xmlns:domain1="clr-namespace:ChattyMoWPFGUI.Domain" Icon="/Icon.png">
+    <Window.DataContext>
+        <viewModel:AuthenticationViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </Window.Resources>
+
+    <Window.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}" />
+    </Window.Visibility>
+
+    <Grid Margin="31,48,35,22">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBox materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFilledTextBox}"
+                 HorizontalAlignment="Left" Margin="14,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center"
+                 Width="557" Grid.ColumnSpan="2"
+                 Grid.Column="0" Grid.Row="0">
+            <TextBox.Text>
+                <Binding
+                    Path="Username"
+                    UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" />
+                        <domain1:MaxMinCharsValidationRule
+                            Min="3"
+                            Max="30"
+                            ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <PasswordBox
+            materialDesign:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFilledRevealPasswordBox}"
+            HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Width="556" Grid.ColumnSpan="2"
+            Grid.Column="0" Margin="14,0,0,0" Height="47" />
+        <Button IsEnabled="{Binding ButtonsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Command="{Binding LoginCommand}" Grid.Column="0" Content="Login"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="14,0,10,0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                Height="43" VerticalAlignment="Center" />
+        <Button IsEnabled="{Binding ButtonsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Command="{Binding RegisterCommand}" Content="Create account"
+                Style="{StaticResource MaterialDesignRaisedButton}" Margin="10,0,14,0"
+                Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="43"
+                VerticalAlignment="Center" Grid.Column="1" />
+        <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="-31,-48,-35,0" TextWrapping="Wrap"
+                   Text="ChattyMo" VerticalAlignment="Top" Height="40"
+                   Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Background="RoyalBlue" Foreground="White"
+                   Padding="10,10,10,10" />
+        <materialDesign:Snackbar Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0"
+                                 MessageQueue="{Binding  MessageQueue}" />
+    </Grid>
+</Window>

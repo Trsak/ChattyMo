@@ -3,7 +3,7 @@
 Nejprve bude nutné zprovoznit REST API, která musí běžet po celou dobu testování GUI aplikací. Jednotlivé GUI aplikace je možné míst spuštěné vícekrát a používat je zároveň.
 
 ### Backend REST API
-1. Ke zprovoznění REST API budete potřebovat nainstalovanou služvu Docker, ideálně pak aplikaci Docker Desktop - https://www.docker.com/products/docker-desktop/.
+1. Ke zprovoznění REST API budete potřebovat nainstalovanou službu Docker, ideálně pak aplikaci Docker Desktop - https://www.docker.com/products/docker-desktop/.
 2. Po nainstalování a spuštění aplikace Docker Desktop spusťe přiložený soubor `RunRestApi.bat`.
 3. Jakmile dojde k sestavení kontejnerů, budou zároveň spuštěny.
 4. To že už REST API správně běží je možné si ověřit otevřením Swagger dokumentace na adrese http://localhost:8080/swagger

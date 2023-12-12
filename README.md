@@ -1,4 +1,4 @@
-# Porovnání platforem pro návrh a~tvorbu GUI na platformě C#/.NET
+# Porovnání platforem pro návrh a tvorbu GUI na platformě C#/.NET
 ## Spuštění aplikací
 Nejprve bude nutné zprovoznit REST API, která musí běžet po celou dobu testování GUI aplikací. Jednotlivé GUI aplikace je možné míst spuštěné vícekrát a používat je zároveň.
 

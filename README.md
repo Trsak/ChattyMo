@@ -20,13 +20,10 @@ Jelikož se nejedná o aplikaci vydanou bezpečným vydavatelem, může být pot
 
 ### UWPGUI
 Spuštění aplikace implementované s knihovnou UWP je bohužel značně složitější, důvody jsou popsány v textu práce, konkrétně v kapitole číslo 4.3.3.  
-Všechny soubory se nachází v adresáři ReleasedApps\UWPGUI.
-1. Nejprve je nutné povolit spouštění skriptů PowerShell podepsaných vzdáleně. Toho docílíme spuštěním PowerShell jako administrátor (Nabídka Windows -> `Windows PowerShell` -> Run as Administrator), následním zadáním příkazu `Set-ExecutionPolicy Unrestricted` a potvrzením pomocí zadání `Y`.
-1. Následně stačí spustit instalační skript `Install.ps1` (pravým -> Run with PowerShell). Tento skript nainstaluje certifikát aplikace a následně i aplikaci samotnou. V průběhu instalace může být nutné potvrdit instalační kroky a postupné spouštění skriptů.  
-2. V případě, že není povoleno spouštění skriptů PowerShell, je nutné jejich spouštění povolit příkazem `Set-ExecutionPolicy RemoteSigned`
-3. Po úspěšném zpracování skriptu je aplikace nainstalována do systému a může být otevřena například pomocí nabídky windows pod názvem **ChattyMoUWPGUI**
-4. Na závěr je nutné aplikaci udělit přístup k síti localhost kvůli připojení k REST API, docílíme toho spuštěním skriptu `AllowLocalhostForUWP.bat`
-5. Aplikace by nyní měla být plně funkční a připravena k používání.
+
+O celou instalaci by se však měl postarat přiložený skript `InstallUWPApp.bat`. **Je však nutné ho spustit jako administrátor!** Toho docílíme pravým kliknutím a volbou "Spustit jako správce". V průběhu instalace bude možná nutné některé instalační kroky potvrdit.  
+
+Po úspěšném zpracování skriptu je aplikace nainstalována do systému a může být otevřena například pomocí nabídky Windows pod názvem **ChattyMoUWPGUI**.
 
 ## Překlad a spuštění aplikací ze zdrojového kódu
 Pro překlad a spuštění doporučuji využít vývojové prostředí Visual Studio 2022. Pro překlad je nutné mít nainstalovaný .NET 6.0 SDK - https://dotnet.microsoft.com/en-us/download/dotnet/6.0. Zároveň je nutné mít v rámci prostředí Visual Studia nainstalované komponenty pro vývoj aplikací WinForms, WPF a UWP.

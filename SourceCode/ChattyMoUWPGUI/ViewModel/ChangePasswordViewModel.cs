@@ -21,8 +21,8 @@ public partial class ChangePasswordViewModel : ObservableValidator
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [Required]
-    [MaxLength(60)]
-    [MinLength(3)]
+    [MaxLength(60, ErrorMessage = "New Password can not be longer than 60 characters.")]
+    [MinLength(3, ErrorMessage = "New Password must be at least 3 characters long.")]
     private string? _newPassword;
 
     private string? _newPasswordCheck;
@@ -30,8 +30,8 @@ public partial class ChangePasswordViewModel : ObservableValidator
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [Required]
-    [MaxLength(60)]
-    [MinLength(3)]
+    [MaxLength(60, ErrorMessage = "Current Password can not be longer than 60 characters.")]
+    [MinLength(3, ErrorMessage = "Current Password must be at least 3 characters long.")]
     private string? _oldPassword;
 
     [ObservableProperty]
@@ -44,8 +44,8 @@ public partial class ChangePasswordViewModel : ObservableValidator
     }
 
     [Required]
-    [MaxLength(60)]
-    [MinLength(3)]
+    [MaxLength(60, ErrorMessage = "New Password Check can not be longer than 60 characters.")]
+    [MinLength(3, ErrorMessage = "New Password Check must be at least 3 characters long.")]
     [CustomValidation(typeof(ChangePasswordViewModel), "ValidatePasswordCheck")]
     public string? NewPasswordCheck
     {

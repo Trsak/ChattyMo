@@ -9,7 +9,7 @@
     <Identity
             Name="15497848-7eb4-46f7-9920-e695ba086f0c"
             Publisher="CN=Petr Šopf"
-            Version="1.0.8.0"/>
+            Version="1.0.11.0"/>
 
     <mp:PhoneIdentity PhoneProductId="15497848-7eb4-46f7-9920-e695ba086f0c"
                       PhonePublisherId="00000000-0000-0000-0000-000000000000"/>

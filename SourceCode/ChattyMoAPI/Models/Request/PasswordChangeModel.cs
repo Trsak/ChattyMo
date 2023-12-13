@@ -7,12 +7,12 @@ namespace ChattyMoAPI.Models.Request;
 public class PasswordChangeModel
 {
     [Required]
-    [MaxLength(60)]
-    [MinLength(3)]
+    [MaxLength(60, ErrorMessage = "Password can not be longer than 60 characters.")]
+    [MinLength(3, ErrorMessage = "Password must be at least 3 characters long.")]
     public string OldPassword { get; set; }
 
     [Required]
-    [MaxLength(60)]
-    [MinLength(3)]
+    [MaxLength(60, ErrorMessage = "Password can not be longer than 60 characters.")]
+    [MinLength(3, ErrorMessage = "Password must be at least 3 characters long.")]
     public string NewPassword { get; set; }
 }

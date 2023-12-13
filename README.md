@@ -23,6 +23,8 @@ Spuštění aplikace implementované s knihovnou UWP je bohužel značně složi
 
 O celou instalaci by se však měl postarat přiložený skript `InstallUWPApp.bat`. **Je však nutné ho spustit jako administrátor!** Toho docílíme pravým kliknutím a volbou "Spustit jako správce". V průběhu instalace bude možná nutné některé instalační kroky potvrdit.  
 
+Potvrzení všech kroků provedete vždy zadáním **R** (Run once).
+
 Po úspěšném zpracování skriptu je aplikace nainstalována do systému a může být otevřena například pomocí nabídky Windows pod názvem **ChattyMoUWPGUI**.
 
 ## Překlad a spuštění aplikací ze zdrojového kódu
